@@ -1,4 +1,5 @@
 from datetime import datetime
+from sqlmodel import SQLModel, Field, relationship
 
 from pydantic import BaseModel, computed_field
 
@@ -7,8 +8,8 @@ from .clientes import Cliente
 
 
 # Crear el modelo facturas(id, fecha, cliente, transacciones)
-class FacturaBase(BaseModel):
-    fecha: datetime = datetime.now()
+class FacturaBase(SQLModel):
+    fecha: str = Field(default=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     cliente: Cliente
     transacciones: list[Transaccion] = []
 
@@ -28,7 +29,7 @@ class FacturaBase(BaseModel):
                     * transaccion.cantidad
                 )
 
-        return total_factura
+        return 0.0
 
 
 class FacturaCrear(FacturaBase):
