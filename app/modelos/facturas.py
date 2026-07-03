@@ -1,5 +1,5 @@
 from pydantic import BaseModel, computed_field
-from modelos.transacciones import Transaccion
+from app.modelos.transacciones import Transaccion
 from .clientes import Clientes
 from datetime import datetime
 

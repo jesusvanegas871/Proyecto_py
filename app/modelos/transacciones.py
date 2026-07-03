@@ -15,4 +15,5 @@ class TransaccionEditar(TransaccionBase):
     pass
 
 class Transaccion(TransaccionBase):
-    pass
+    id: int
+    factura_id: int
